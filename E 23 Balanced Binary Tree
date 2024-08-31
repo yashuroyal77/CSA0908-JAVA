@@ -1,0 +1,50 @@
+public class R192211406 {
+    public static void main(String[] args) {
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(2);
+        root1.left.left = new TreeNode(3);
+        root1.left.right = new TreeNode(3);
+        root1.left.left.left = new TreeNode(4);
+        root1.left.left.right = new TreeNode(4);
+
+        TreeNode root2 = new TreeNode(1);
+        root2.left = new TreeNode(2);
+        root2.right = new TreeNode(2);
+        root2.left.left = new TreeNode(3);
+        root2.left.right = new TreeNode(3);
+        root2.left.left.left = new TreeNode(4);
+
+        System.out.println("Tree1 is balanced: " + isBalanced(root1)); // Output: false
+        System.out.println("Tree2 is balanced: " + isBalanced(root2)); // Output: true
+    }
+
+    public static boolean isBalanced(TreeNode root) {
+        return checkBalance(root) != -1;
+    }
+
+    private static int checkBalance(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftHeight = checkBalance(node.left);
+        int rightHeight = checkBalance(node.right);
+
+        if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
