@@ -1,0 +1,24 @@
+public class R192211406 {
+    public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
+        int uniqueIndex = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 1, 2, 3, 3, 4, 5, 5};
+        int length = removeDuplicates(nums);
+        System.out.println("Length of array with unique elements: " + length);
+        System.out.print("Unique elements: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(nums[i] + " ");
+        }
+    }
+}
+
