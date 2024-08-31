@@ -1,0 +1,53 @@
+public class R192211406 {
+    public static void main(String[] args) {
+        int[] nums1 = {-10, -3, 0, 5, 9};
+        int[] nums2 = {1, 3};
+
+        TreeNode root1 = sortedArrayToBST(nums1);
+        TreeNode root2 = sortedArrayToBST(nums2);
+
+        System.out.println("In-order traversal of BST1: " + inOrderTraversal(root1));
+        System.out.println("In-order traversal of BST2: " + inOrderTraversal(root2));
+    }
+
+    public static TreeNode sortedArrayToBST(int[] nums) {
+        return buildBST(nums, 0, nums.length - 1);
+    }
+
+    private static TreeNode buildBST(int[] nums, int left, int right) {
+        if (left > right) {
+            return null;
+        }
+        
+        int mid = left + (right - left) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = buildBST(nums, left, mid - 1);
+        root.right = buildBST(nums, mid + 1, right);
+        
+        return root;
+    }
+
+    private static String inOrderTraversal(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        traverse(root, sb);
+        return sb.toString();
+    }
+
+    private static void traverse(TreeNode node, StringBuilder sb) {
+        if (node != null) {
+            traverse(node.left, sb);
+            sb.append(node.val).append(" ");
+            traverse(node.right, sb);
+        }
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
