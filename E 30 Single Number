@@ -1,0 +1,16 @@
+public class R192211406 {
+    public static void main(String[] args) {
+        int[] nums1 = {2, 2, 1};
+        int[] nums2 = {4, 1, 2, 1, 2};
+        System.out.println(findSingleNumber(nums1));
+        System.out.println(findSingleNumber(nums2));
+    }
+
+    public static int findSingleNumber(int[] nums) {
+        int singleNumber = 0;
+        for (int num : nums) {
+            singleNumber ^= num;
+        }
+        return singleNumber;
+    }
+}
