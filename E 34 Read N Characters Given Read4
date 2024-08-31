@@ -1,0 +1,24 @@
+public class Reader extends Reader4 {
+    private char[] buffer4 = new char[4];
+    private int buffer4Start = 0;
+    private int buffer4End = 0;
+
+    @Override
+    public int read(char[] buf, int n) {
+        int totalRead = 0;
+
+        while (totalRead < n) {
+            if (buffer4Start == buffer4End) {
+                buffer4End = read4(buffer4);
+                buffer4Start = 0;
+                if (buffer4End == 0) break; // End of file
+            }
+
+            while (totalRead < n && buffer4Start < buffer4End) {
+                buf[totalRead++] = buffer4[buffer4Start++];
+            }
+        }
+
+        return totalRead;
+    }
+}
