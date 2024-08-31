@@ -1,0 +1,15 @@
+public class 14 {
+    public static void main(String[] args) {
+        double x1 = 16.0;
+        double x2 = 25.0;
+        double x3 = 2.0;
+
+        System.out.println("Square root of " + x1 + " is " + sqrt(x1));
+        System.out.println("Square root of " + x2 + " is " + sqrt(x2));
+        System.out.println("Square root of " + x3 + " is " + sqrt(x3));
+    }
+
+    public static double sqrt(double x) {
+        return Math.sqrt(x);
+    }
+}
